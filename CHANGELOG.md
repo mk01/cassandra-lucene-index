@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.4-1.0.0 (June 16, 2022)
+
+* Upgrade to Apache Cassandra 4.0.4
+
 ## 4.0.1-1.0.0 (Sept 08, 2021)
 
 * Upgrade to Apache Cassandra 4.0.1
