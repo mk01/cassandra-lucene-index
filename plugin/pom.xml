@@ -128,6 +128,7 @@
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
+                <version>3.2.2</version>
                 <configuration>
                     <args>
                         <arg>-nowarn</arg>
