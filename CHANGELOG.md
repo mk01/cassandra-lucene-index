@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.10-1.0.0 (24 July, 2023)
+
+* Upgrade to Apache Cassandra 4.0.11
+
 ## 4.0.10-1.0.0 (30 May, 2023)
 
 * Upgrade to Apache Cassandra 4.0.10
