@@ -100,7 +100,7 @@
         <jackson.databind.version>2.13.2.2</jackson.databind.version>
         <jacoco-IT-argline></jacoco-IT-argline>
         <jts.version>1.14.0</jts.version>
-        <lucene.version>5.5.4</lucene.version>
+        <lucene.version>6.4.2</lucene.version>
         <scala.version>2.13.1</scala.version>
         <scala.binary.version>2.13</scala.binary.version>
         <scala.logging.version>3.9.2</scala.logging.version>

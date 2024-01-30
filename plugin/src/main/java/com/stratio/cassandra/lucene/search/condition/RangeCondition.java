@@ -20,7 +20,7 @@ import com.stratio.cassandra.lucene.IndexException;
 import com.stratio.cassandra.lucene.schema.mapping.SingleColumnMapper;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.search.DocValuesRangeQuery;
-import org.apache.lucene.search.NumericRangeQuery;
+import org.apache.lucene.search.LegacyNumericRangeQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermRangeQuery;
 
@@ -138,25 +138,25 @@ public class RangeCondition extends SingleColumnCondition {
     private Query query(Integer start, Integer stop) {
         return docValues
                ? DocValuesRangeQuery.newLongRange(field, docValue(start), docValue(stop), includeLower, includeUpper)
-               : NumericRangeQuery.newIntRange(field, start, stop, includeLower, includeUpper);
+               : LegacyNumericRangeQuery.newIntRange(field, start, stop, includeLower, includeUpper);
     }
 
     private Query query(Long start, Long stop) {
         return docValues
                ? DocValuesRangeQuery.newLongRange(field, docValue(start), docValue(stop), includeLower, includeUpper)
-               : NumericRangeQuery.newLongRange(field, start, stop, includeLower, includeUpper);
+               : LegacyNumericRangeQuery.newLongRange(field, start, stop, includeLower, includeUpper);
     }
 
     private Query query(Float start, Float stop) {
         return docValues
                ? DocValuesRangeQuery.newLongRange(field, docValue(start), docValue(stop), includeLower, includeUpper)
-               : NumericRangeQuery.newFloatRange(field, start, stop, includeLower, includeUpper);
+               : LegacyNumericRangeQuery.newFloatRange(field, start, stop, includeLower, includeUpper);
     }
 
     private Query query(Double start, Double stop) {
         return docValues
                ? DocValuesRangeQuery.newLongRange(field, docValue(start), docValue(stop), includeLower, includeUpper)
-               : NumericRangeQuery.newDoubleRange(field, start, stop, includeLower, includeUpper);
+               : LegacyNumericRangeQuery.newDoubleRange(field, start, stop, includeLower, includeUpper);
     }
 
     /**

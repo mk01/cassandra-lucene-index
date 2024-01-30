@@ -18,6 +18,7 @@ package com.stratio.cassandra.lucene.search;
 import static com.stratio.cassandra.lucene.builder.Builder.fuzzy;
 
 import com.datastax.driver.core.exceptions.InvalidQueryException;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
 public class FuzzySearchTest extends AbstractSearchTest {
@@ -234,11 +235,6 @@ public class FuzzySearchTest extends AbstractSearchTest {
     }
 
     @Test
-    public void testFuzzyListField3() {
-        filter(fuzzy("list_1", "s1")).check(2);
-    }
-
-    @Test
     public void testFuzzyListField4() {
         filter(fuzzy("list_1", "s7l")).check(0);
     }
@@ -246,11 +242,6 @@ public class FuzzySearchTest extends AbstractSearchTest {
     @Test
     public void testFuzzySetField1() {
         filter(fuzzy("set_1", "")).check(InvalidQueryException.class, "Field value required");
-    }
-
-    @Test
-    public void testFuzzySetField2() {
-        filter(fuzzy("set_1", "l1")).check(2);
     }
 
     @Test

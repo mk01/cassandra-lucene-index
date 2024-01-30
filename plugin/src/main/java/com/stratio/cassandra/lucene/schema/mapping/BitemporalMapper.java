@@ -20,7 +20,7 @@ import com.stratio.cassandra.lucene.IndexException;
 import com.stratio.cassandra.lucene.column.Columns;
 import com.stratio.cassandra.lucene.common.DateParser;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.lucene.document.LongField;
+import org.apache.lucene.document.LegacyLongField;
 import org.apache.lucene.index.IndexableField;
 import org.apache.lucene.search.SortField;
 
@@ -128,10 +128,10 @@ public class BitemporalMapper extends MultipleColumnMapper {
         validate(vtFromTime, vtToTime, ttFromTime, ttToTime);
 
         List<IndexableField> fields = new ArrayList<>(4);
-        fields.add(new LongField(field + VT_FROM_FIELD_SUFFIX, vtFromTime.toTimestamp(), STORE));
-        fields.add(new LongField(field + VT_TO_FIELD_SUFFIX, vtToTime.toTimestamp(), STORE));
-        fields.add(new LongField(field + TT_FROM_FIELD_SUFFIX, ttFromTime.toTimestamp(), STORE));
-        fields.add(new LongField(field + TT_TO_FIELD_SUFFIX, ttToTime.toTimestamp(), STORE));
+        fields.add(new LegacyLongField(field + VT_FROM_FIELD_SUFFIX, vtFromTime.toTimestamp(), STORE));
+        fields.add(new LegacyLongField(field + VT_TO_FIELD_SUFFIX, vtToTime.toTimestamp(), STORE));
+        fields.add(new LegacyLongField(field + TT_FROM_FIELD_SUFFIX, ttFromTime.toTimestamp(), STORE));
+        fields.add(new LegacyLongField(field + TT_TO_FIELD_SUFFIX, ttToTime.toTimestamp(), STORE));
         return fields;
     }
 

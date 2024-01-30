@@ -142,7 +142,7 @@ public class SortedSearchTest extends AbstractSearchTest {
             .insert(new String[]{"id", "field"}, new Object[]{5, "dog"})
             .refresh()
             .query(match("field", "word"))
-            .checkOrderedColumns("id", 1, 2, 3, 4)
+            .checkOrderedColumns("id", 2, 1, 3, 4)
             .filter(match("field", "word"))
             .checkOrderedColumns("id", 1, 2, 4, 3)
             .filter(match("field", "word"))

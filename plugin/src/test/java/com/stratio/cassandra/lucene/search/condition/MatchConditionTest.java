@@ -24,7 +24,7 @@ import com.stratio.cassandra.lucene.util.ByteBufferUtils;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.BooleanQuery;
-import org.apache.lucene.search.NumericRangeQuery;
+import org.apache.lucene.search.LegacyNumericRangeQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
 import org.junit.Test;
@@ -162,9 +162,9 @@ public class MatchConditionTest extends AbstractConditionTest {
         Query query = matchCondition.doQuery(schema);
 
         assertNotNull("Query is not built", query);
-        assertEquals("Query type is wrong", NumericRangeQuery.class, query.getClass());
+        assertEquals("Query type is wrong", LegacyNumericRangeQuery.class, query.getClass());
 
-        NumericRangeQuery<?> numericRangeQuery = (NumericRangeQuery<?>) query;
+        LegacyNumericRangeQuery<?> numericRangeQuery = (LegacyNumericRangeQuery<?>) query;
         assertEquals("Query value is wrong", 42.42F, numericRangeQuery.getMin());
         assertEquals("Query value is wrong", 42.42F, numericRangeQuery.getMax());
         assertEquals("Query value is wrong", true, numericRangeQuery.includesMin());
@@ -180,9 +180,9 @@ public class MatchConditionTest extends AbstractConditionTest {
         Query query = matchCondition.doQuery(schema);
 
         assertNotNull("Query is not built", query);
-        assertEquals("Query type is wrong", NumericRangeQuery.class, query.getClass());
+        assertEquals("Query type is wrong", LegacyNumericRangeQuery.class, query.getClass());
 
-        NumericRangeQuery<?> numericRangeQuery = (NumericRangeQuery<?>) query;
+        LegacyNumericRangeQuery<?> numericRangeQuery = (LegacyNumericRangeQuery<?>) query;
         assertEquals("Query value is wrong", 42.42D, numericRangeQuery.getMin());
         assertEquals("Query value is wrong", 42.42D, numericRangeQuery.getMax());
         assertEquals("Query value is wrong", true, numericRangeQuery.includesMin());

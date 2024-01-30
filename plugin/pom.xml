@@ -42,6 +42,7 @@
         <version.findbugs>3.0.1</version.findbugs>
         <version.jdeb>1.8</version.jdeb>
         <version.rpm>1.5.0</version.rpm>
+        <spatial4j.version>0.6</spatial4j.version>
         <version.scala.maven.plugin>4.4.0</version.scala.maven.plugin>
         <version.scala>2.13.1</version.scala>
         <outputDirectory>${project.build.directory}</outputDirectory>
@@ -86,6 +87,11 @@
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-spatial-extras</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-queryparser</artifactId>
             <version>${lucene.version}</version>
         </dependency>
@@ -120,6 +126,21 @@
             <artifactId>commons-io</artifactId>
             <version>${version.commons.io}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.locationtech.spatial4j</groupId>
+            <artifactId>spatial4j</artifactId>
+            <version>${spatial4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.locationtech.spatial4j</groupId>
+            <artifactId>spatial4j</artifactId>
+            <version>${spatial4j.version}</version>
+            <classifier>tests</classifier>
+            <scope>test</scope>
+        </dependency>
+
         <!-- test -->
         <dependency>
             <groupId>org.mockito</groupId>

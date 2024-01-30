@@ -18,7 +18,7 @@ package com.stratio.cassandra.lucene.search.condition;
 import com.stratio.cassandra.lucene.schema.Schema;
 import com.stratio.cassandra.lucene.search.condition.builder.PrefixConditionBuilder;
 import com.stratio.cassandra.lucene.search.condition.builder.RangeConditionBuilder;
-import org.apache.lucene.search.NumericRangeQuery;
+import org.apache.lucene.search.LegacyNumericRangeQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermRangeQuery;
 import org.junit.Test;
@@ -165,9 +165,9 @@ public class RangeConditionTest extends AbstractConditionTest {
         Query query = rangeCondition.doQuery(schema);
 
         assertNotNull("Query is not built", query);
-        assertEquals("Query type is wrong", NumericRangeQuery.class, query.getClass());
+        assertEquals("Query type is wrong", LegacyNumericRangeQuery.class, query.getClass());
 
-        NumericRangeQuery<?> numericRangeQuery = (NumericRangeQuery<?>) query;
+        LegacyNumericRangeQuery<?> numericRangeQuery = (LegacyNumericRangeQuery<?>) query;
         assertEquals("Query field is wrong", "name", numericRangeQuery.getField());
         assertEquals("Query lower is wrong", 42, numericRangeQuery.getMin());
         assertEquals("Query upper is wrong", 43, numericRangeQuery.getMax());
@@ -184,9 +184,9 @@ public class RangeConditionTest extends AbstractConditionTest {
         Query query = rangeCondition.doQuery(schema);
 
         assertNotNull("Query is not built", query);
-        assertEquals("Query type is wrong", NumericRangeQuery.class, query.getClass());
+        assertEquals("Query type is wrong", LegacyNumericRangeQuery.class, query.getClass());
 
-        NumericRangeQuery<?> numericRangeQuery = (NumericRangeQuery<?>) query;
+        LegacyNumericRangeQuery<?> numericRangeQuery = (LegacyNumericRangeQuery<?>) query;
         assertEquals("Query field is wrong", "name", numericRangeQuery.getField());
         assertEquals("Query lower is wrong", 42, numericRangeQuery.getMin());
         assertEquals("Query upper is wrong", null, numericRangeQuery.getMax());
@@ -203,9 +203,9 @@ public class RangeConditionTest extends AbstractConditionTest {
         Query query = rangeCondition.doQuery(schema);
 
         assertNotNull("Query is not built", query);
-        assertEquals("Query type is wrong", NumericRangeQuery.class, query.getClass());
+        assertEquals("Query type is wrong", LegacyNumericRangeQuery.class, query.getClass());
 
-        NumericRangeQuery<?> numericRangeQuery = (NumericRangeQuery<?>) query;
+        LegacyNumericRangeQuery<?> numericRangeQuery = (LegacyNumericRangeQuery<?>) query;
         assertEquals("Query field is wrong", "name", numericRangeQuery.getField());
         assertEquals("Query lower is wrong", 42L, numericRangeQuery.getMin());
         assertEquals("Query upper is wrong", 43L, numericRangeQuery.getMax());
@@ -222,9 +222,9 @@ public class RangeConditionTest extends AbstractConditionTest {
         Query query = rangeCondition.doQuery(schema);
 
         assertNotNull("Query is not built", query);
-        assertEquals("Query type is wrong", NumericRangeQuery.class, query.getClass());
+        assertEquals("Query type is wrong", LegacyNumericRangeQuery.class, query.getClass());
 
-        NumericRangeQuery<?> numericRangeQuery = (NumericRangeQuery<?>) query;
+        LegacyNumericRangeQuery<?> numericRangeQuery = (LegacyNumericRangeQuery<?>) query;
         assertEquals("Query field is wrong", "name", numericRangeQuery.getField());
         assertEquals("Query lower is wrong", 42L, numericRangeQuery.getMin());
         assertEquals("Query upper is wrong", null, numericRangeQuery.getMax());
@@ -241,9 +241,9 @@ public class RangeConditionTest extends AbstractConditionTest {
         Query query = rangeCondition.doQuery(schema);
 
         assertNotNull("Query is not built", query);
-        assertEquals("Query type is wrong", NumericRangeQuery.class, query.getClass());
+        assertEquals("Query type is wrong", LegacyNumericRangeQuery.class, query.getClass());
 
-        NumericRangeQuery<?> numericRangeQuery = (NumericRangeQuery<?>) query;
+        LegacyNumericRangeQuery<?> numericRangeQuery = (LegacyNumericRangeQuery<?>) query;
         assertEquals("Query field is wrong", "name", numericRangeQuery.getField());
         assertEquals("Query lower is wrong", 42.42F, numericRangeQuery.getMin());
         assertEquals("Query upper is wrong", 43.42f, numericRangeQuery.getMax());
@@ -260,9 +260,9 @@ public class RangeConditionTest extends AbstractConditionTest {
         Query query = rangeCondition.doQuery(schema);
 
         assertNotNull("Query is not built", query);
-        assertEquals("Query type is wrong", NumericRangeQuery.class, query.getClass());
+        assertEquals("Query type is wrong", LegacyNumericRangeQuery.class, query.getClass());
 
-        NumericRangeQuery<?> numericRangeQuery = (NumericRangeQuery<?>) query;
+        LegacyNumericRangeQuery<?> numericRangeQuery = (LegacyNumericRangeQuery<?>) query;
         assertEquals("Query field is wrong", "name", numericRangeQuery.getField());
         assertEquals("Query lower is wrong", 42.42f, numericRangeQuery.getMin());
         assertEquals("Query upper is wrong", null, numericRangeQuery.getMax());
@@ -279,9 +279,9 @@ public class RangeConditionTest extends AbstractConditionTest {
         Query query = rangeCondition.doQuery(schema);
 
         assertNotNull("Query is not built", query);
-        assertEquals("Query type is wrong", NumericRangeQuery.class, query.getClass());
+        assertEquals("Query type is wrong", LegacyNumericRangeQuery.class, query.getClass());
 
-        NumericRangeQuery<?> numericRangeQuery = (NumericRangeQuery<?>) query;
+        LegacyNumericRangeQuery<?> numericRangeQuery = (LegacyNumericRangeQuery<?>) query;
         assertEquals("Query field is wrong", "name", numericRangeQuery.getField());
         assertEquals("Query lower is wrong", 42.42D, numericRangeQuery.getMin());
         assertEquals("Query upper is wrong", 43.42D, numericRangeQuery.getMax());
@@ -298,9 +298,9 @@ public class RangeConditionTest extends AbstractConditionTest {
         Query query = rangeCondition.doQuery(schema);
 
         assertNotNull("Query is not built", query);
-        assertEquals("Query type is wrong", NumericRangeQuery.class, query.getClass());
+        assertEquals("Query type is wrong", LegacyNumericRangeQuery.class, query.getClass());
 
-        NumericRangeQuery<?> numericRangeQuery = (NumericRangeQuery<?>) query;
+        LegacyNumericRangeQuery<?> numericRangeQuery = (LegacyNumericRangeQuery<?>) query;
         assertEquals("Query field is wrong", "name", numericRangeQuery.getField());
         assertEquals("Query lower is wrong", 42.42D, numericRangeQuery.getMin());
         assertEquals("Query upper is wrong", null, numericRangeQuery.getMax());

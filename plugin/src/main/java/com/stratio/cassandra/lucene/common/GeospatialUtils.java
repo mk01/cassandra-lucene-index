@@ -15,9 +15,9 @@
  */
 package com.stratio.cassandra.lucene.common;
 
-import com.spatial4j.core.context.SpatialContext;
 import com.stratio.cassandra.lucene.IndexException;
 import org.apache.lucene.spatial.prefix.tree.GeohashPrefixTree;
+import org.locationtech.spatial4j.context.SpatialContext;
 
 /**
  * Utilities for geospatial related stuff.

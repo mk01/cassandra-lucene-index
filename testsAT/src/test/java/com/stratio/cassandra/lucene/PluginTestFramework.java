@@ -75,9 +75,9 @@ public abstract class PluginTestFramework {
                 final String pluginDir = System.getProperty("outputDirectory", "../plugin/target");
                 final Path pluginJar = Paths.get(pluginDir, "cassandra-lucene-index-plugin-" + pluginCassandraVersion + ".jar");
                 Files.copy(pluginJar, workingDirectory.resolve("lib").resolve(pluginJar.getFileName()), REPLACE_EXISTING);
-                final Path jtsCoreJar = workingDirectory.resolve("lib").resolve("jts-core.jar");
+                final Path jtsCoreJar = workingDirectory.resolve("lib").resolve("spatial4j-0.6.jar");
                 if (!Files.exists(jtsCoreJar)) {
-                    FileUtils.copyURLToFile(new URL("https://search.maven.org/remotecontent?filepath=com/vividsolutions/jts-core/1.14.0/jts-core-1.14.0.jar"),
+                    FileUtils.copyURLToFile(new URL("https://repo1.maven.org/maven2/org/locationtech/spatial4j/spatial4j/0.6/spatial4j-0.6.jar"),
                                             jtsCoreJar.toFile());
                 }
             });

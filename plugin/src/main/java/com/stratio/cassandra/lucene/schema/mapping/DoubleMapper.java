@@ -16,7 +16,7 @@
 package com.stratio.cassandra.lucene.schema.mapping;
 
 import com.stratio.cassandra.lucene.IndexException;
-import org.apache.lucene.document.DoubleField;
+import org.apache.lucene.document.LegacyDoubleField;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.SortedNumericDocValuesField;
 import org.apache.lucene.search.SortField;
@@ -70,7 +70,7 @@ public class DoubleMapper extends SingleColumnMapper.SingleFieldMapper<Double> {
     /** {@inheritDoc} */
     @Override
     public Optional<Field> indexedField(String name, Double value) {
-        DoubleField doubleField = new DoubleField(name, value, STORE);
+        LegacyDoubleField doubleField = new LegacyDoubleField(name, value, STORE);
         doubleField.setBoost(boost);
         return Optional.of(doubleField);
     }

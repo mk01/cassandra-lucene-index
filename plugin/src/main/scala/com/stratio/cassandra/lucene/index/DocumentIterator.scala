@@ -96,7 +96,7 @@ class DocumentIterator(
           val fieldDoc = afters(i).map(_.asInstanceOf[FieldDoc]).orNull
           val collect = TopFieldCollector.create(sort, pageSize, fieldDoc, true, false, false)
           val hits = offsets(i) + pageSize
-          val earlyCollect = new EarlyTerminatingSortingCollector(collect, sort, hits, indexSort)
+          val earlyCollect = new EarlyTerminatingSortingCollector(collect, sort, hits)
           searchers(i).search(query, earlyCollect)
           val topDocs = collect.topDocs
           offsets(i) += topDocs.scoreDocs.length

@@ -20,8 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.google.common.base.MoreObjects;
-import com.spatial4j.core.shape.Rectangle;
-import com.spatial4j.core.shape.jts.JtsGeometry;
+import org.locationtech.spatial4j.shape.Rectangle;
+import org.locationtech.spatial4j.shape.jts.JtsGeometry;
 import com.vividsolutions.jts.geom.Geometry;
 
 import java.util.Arrays;

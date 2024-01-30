@@ -68,7 +68,7 @@ class FSIndex(
     indexWriterConfig.setRAMBufferSizeMB(ramBufferMB)
     indexWriterConfig.setOpenMode(IndexWriterConfig.OpenMode.CREATE_OR_APPEND)
     indexWriterConfig.setUseCompoundFile(true)
-    indexWriterConfig.setMergePolicy(new SortingMergePolicy(new TieredMergePolicy, mergeSort))
+    indexWriterConfig.setMergePolicy(new TieredMergePolicy)
     writer = new IndexWriter(directory, indexWriterConfig)
 
     // Setup NRT search
@@ -79,9 +79,9 @@ class FSIndex(
         searcher
       }
     }
-    val tracker = new TrackingIndexWriter(writer)
-    manager = new SearcherManager(writer, true, searcherFactory)
-    reopener = new ControlledRealTimeReopenThread(tracker, manager, refreshSeconds, refreshSeconds)
+    //val tracker = new TrackingIndexWriter(writer)
+    manager = new SearcherManager(writer, searcherFactory)
+    reopener = new ControlledRealTimeReopenThread(writer, manager, refreshSeconds, refreshSeconds)
     reopener.start()
   }
 

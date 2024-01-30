@@ -24,7 +24,7 @@ import org.apache.lucene.search.Query;
 import static com.stratio.cassandra.lucene.schema.mapping.BitemporalMapper.BitemporalDateTime;
 import static org.apache.lucene.search.BooleanClause.Occur.MUST;
 import static org.apache.lucene.search.BooleanClause.Occur.SHOULD;
-import static org.apache.lucene.search.NumericRangeQuery.newLongRange;
+import static org.apache.lucene.search.LegacyNumericRangeQuery.newLongRange;
 
 /**
  * A {@link Condition} implementation that matches bi-temporal (four) fields within two range of values.

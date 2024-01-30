@@ -20,10 +20,10 @@ import com.stratio.cassandra.lucene.mapping.TokenMapper._
 import org.apache.cassandra.config.DatabaseDescriptor
 import org.apache.cassandra.db.DecoratedKey
 import org.apache.cassandra.dht.{Murmur3Partitioner, Token}
-import org.apache.lucene.document.{FieldType, LongField}
+import org.apache.lucene.document.{FieldType, LegacyLongField}
 import org.apache.lucene.index.{DocValuesType, IndexOptions, IndexableField, Term}
 import org.apache.lucene.search._
-import org.apache.lucene.util.{BytesRef, BytesRefBuilder, NumericUtils}
+import org.apache.lucene.util.{BytesRef, BytesRefBuilder, LegacyNumericUtils}
 
 /** Class for several token mappings between Cassandra and Lucene.
   *
@@ -43,7 +43,7 @@ class TokenMapper {
   def indexableField(key: DecoratedKey): IndexableField = {
     val token = key.getToken
     val value = longValue(token)
-    new LongField(FIELD_NAME, value, FIELD_TYPE)
+    new LegacyLongField(FIELD_NAME, value, FIELD_TYPE)
   }
 
   /** Returns a Lucene [[SortField]] for sorting documents according to the partitioner's order.
@@ -79,7 +79,7 @@ class TokenMapper {
     if (max / 10 - min / 10 > 1222337203685480000L) {
       Some(DocValuesRangeQuery.newLongRange(FIELD_NAME, min, max, includeLower, includeUpper))
     } else {
-      Some(NumericRangeQuery.newLongRange(FIELD_NAME, min, max, includeLower, includeUpper))
+      Some(LegacyNumericRangeQuery.newLongRange(FIELD_NAME, min, max, includeLower, includeUpper))
     }
   }
 
@@ -105,7 +105,7 @@ object TokenMapper {
   FIELD_TYPE.setTokenized(true)
   FIELD_TYPE.setOmitNorms(true)
   FIELD_TYPE.setIndexOptions(IndexOptions.DOCS)
-  FIELD_TYPE.setNumericType(FieldType.NumericType.LONG)
+  FIELD_TYPE.setNumericType(FieldType.LegacyNumericType.LONG)
   FIELD_TYPE.setDocValuesType(DocValuesType.NUMERIC)
   FIELD_TYPE.freeze()
 
@@ -126,7 +126,7 @@ object TokenMapper {
   def bytesRef(token: Token): BytesRef = {
     val value = longValue(token)
     val bytesRefBuilder = new BytesRefBuilder
-    NumericUtils.longToPrefixCoded(value, 0, bytesRefBuilder)
+    LegacyNumericUtils.longToPrefixCoded(value, 0, bytesRefBuilder)
     bytesRefBuilder.get
   }
 }
