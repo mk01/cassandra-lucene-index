@@ -35,7 +35,6 @@ import org.apache.cassandra.service.{ClientState, LuceneStorageProxy, QueryState
 import org.apache.cassandra.transport.messages.ResultMessage
 import org.apache.cassandra.transport.messages.ResultMessage.Rows
 import org.apache.cassandra.utils.{FBUtilities, MD5Digest}
-import org.apache.cassandra.transport.Dispatcher.RequestTime
 
 import scala.jdk.CollectionConverters._
 import scala.collection.mutable
@@ -70,7 +69,7 @@ class IndexQueryHandler extends QueryHandler with Logging {
       options: BatchQueryOptions,
       payload: Payload,
       queryStartNanoTime: Long): ResultMessage = {
-    QueryProcessor.instance.processBatch(statement, state, options, payload, RequestTime(queryStartNanoTime))
+    QueryProcessor.instance.processBatch(statement, state, options, payload, queryStartNanoTime)
   }
 
   /** @inheritdoc */
@@ -81,7 +80,7 @@ class IndexQueryHandler extends QueryHandler with Logging {
       payload: Payload,
       queryStartNanoTime: Long): ResultMessage = {
     QueryProcessor.metrics.preparedStatementsExecuted.inc()
-    processStatement(statement, state, options, RequestTime(queryStartNanoTime))
+    processStatement(statement, state, options, queryStartNanoTime)
   }
 
   override def process(statement: CQLStatement,
@@ -89,7 +88,7 @@ class IndexQueryHandler extends QueryHandler with Logging {
                        options: QueryOptions,
                        customPayload: java.util.Map[String, ByteBuffer],
                        queryStartNanoTime: Long): ResultMessage = {
-    processStatement(statement, state, options, RequestTime(queryStartNanoTime))
+    processStatement(statement, state, options, queryStartNanoTime)
   }
 
   def processStatement(
