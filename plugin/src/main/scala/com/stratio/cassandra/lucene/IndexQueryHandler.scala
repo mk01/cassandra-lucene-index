@@ -69,7 +69,7 @@ class IndexQueryHandler extends QueryHandler with Logging {
       state: QueryState,
       options: BatchQueryOptions,
       payload: Payload,
-      queryStartNanoTime: long): ResultMessage = {
+      queryStartNanoTime: Long): ResultMessage = {
     QueryProcessor.instance.processBatch(statement, state, options, payload, RequestTime(queryStartNanoTime))
   }
 
@@ -79,7 +79,7 @@ class IndexQueryHandler extends QueryHandler with Logging {
       state: QueryState,
       options: QueryOptions,
       payload: Payload,
-      queryStartNanoTime: long): ResultMessage = {
+      queryStartNanoTime: Long): ResultMessage = {
     QueryProcessor.metrics.preparedStatementsExecuted.inc()
     processStatement(statement, state, options, RequestTime(queryStartNanoTime))
   }
@@ -88,7 +88,7 @@ class IndexQueryHandler extends QueryHandler with Logging {
                        state: QueryState,
                        options: QueryOptions,
                        customPayload: java.util.Map[String, ByteBuffer],
-                       queryStartNanoTime: long): ResultMessage = {
+                       queryStartNanoTime: Long): ResultMessage = {
     processStatement(statement, state, options, RequestTime(queryStartNanoTime))
   }
 
