@@ -69,8 +69,8 @@ class IndexQueryHandler extends QueryHandler with Logging {
       state: QueryState,
       options: BatchQueryOptions,
       payload: Payload,
-      queryStartNanoTime: RequestTime): ResultMessage = {
-    QueryProcessor.instance.processBatch(statement, state, options, payload, queryStartNanoTime)
+      queryStartNanoTime: long): ResultMessage = {
+    QueryProcessor.instance.processBatch(statement, state, options, payload, RequestTime(queryStartNanoTime))
   }
 
   /** @inheritdoc */
@@ -79,17 +79,17 @@ class IndexQueryHandler extends QueryHandler with Logging {
       state: QueryState,
       options: QueryOptions,
       payload: Payload,
-      queryStartNanoTime: RequestTime): ResultMessage = {
+      queryStartNanoTime: long): ResultMessage = {
     QueryProcessor.metrics.preparedStatementsExecuted.inc()
-    processStatement(statement, state, options, queryStartNanoTime)
+    processStatement(statement, state, options, RequestTime(queryStartNanoTime))
   }
 
   override def process(statement: CQLStatement,
                        state: QueryState,
                        options: QueryOptions,
                        customPayload: java.util.Map[String, ByteBuffer],
-                       queryStartNanoTime: RequestTime): ResultMessage = {
-    processStatement(statement, state, options, queryStartNanoTime)
+                       queryStartNanoTime: long): ResultMessage = {
+    processStatement(statement, state, options, RequestTime(queryStartNanoTime))
   }
 
   def processStatement(
