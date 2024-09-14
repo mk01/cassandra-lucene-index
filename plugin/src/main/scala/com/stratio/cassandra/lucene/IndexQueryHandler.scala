@@ -35,6 +35,7 @@ import org.apache.cassandra.service.{ClientState, LuceneStorageProxy, QueryState
 import org.apache.cassandra.transport.messages.ResultMessage
 import org.apache.cassandra.transport.messages.ResultMessage.Rows
 import org.apache.cassandra.utils.{FBUtilities, MD5Digest}
+import org.apache.cassandra.transport.Dispatcher
 
 import scala.jdk.CollectionConverters._
 import scala.collection.mutable
