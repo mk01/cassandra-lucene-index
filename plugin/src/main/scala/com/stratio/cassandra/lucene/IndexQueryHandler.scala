@@ -216,7 +216,7 @@ class IndexQueryHandler extends QueryHandler with Logging {
     // Read data
     val data = query match {
       case group: Group if group.queries.size > 1 =>
-        LuceneStorageProxy.read(group, consistency, requestTime.startedAtNanos())
+        LuceneStorageProxy.read(group, consistency, requestTime)
       case _ => query.execute(consistency, state.getClientState, requestTime)
     }
 
